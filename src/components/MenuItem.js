@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import navStyle from "../styles/Nav.module.css"
 
-function MenuButton({ menuName }) {
+function MenuItem({ menuName }) {
 
   return (
     <div className={navStyle.menu_box}>
@@ -12,8 +12,8 @@ function MenuButton({ menuName }) {
   );
 }
 
-MenuButton.propTypes = {
+MenuItem.propTypes = {
   menu_name: PropTypes.string.isRequired,
 }
 
-export default MenuButton;
+export default MenuItem;

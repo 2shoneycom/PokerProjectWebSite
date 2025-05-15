@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
 * {
     margin: 0px;
     padding: 0px;
+    font-family: 'Indie Flower', cursive;
+}
+body {
     background-color: #EDE9DF;
 }
