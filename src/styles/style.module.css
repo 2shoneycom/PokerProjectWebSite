@@ -1,0 +1,10 @@
+.link_general {
+    text-decoration: none;
+    color: black;
+}
+.link_current {
+    text-decoration-line: underline;
+    text-decoration-color: black;
+    text-decoration-thickness: 2px;
+    color: black;
+}
