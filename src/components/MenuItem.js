@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
-import navStyle from "../styles/Nav.module.css"
+import style from "../styles/style.module.css"
 
 function MenuItem({ menuName }) {
 
   return (
-    <div className={navStyle.menu_box}>
-      <div className={navStyle.menu_name}>
+    <div className={style.menu_box}>
+      <div className={style.menu_name}>
         {menuName}
       </div>
     </div>

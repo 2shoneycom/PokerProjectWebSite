@@ -1,0 +1,23 @@
+.infopage {
+    width: 100vw; height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.section {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.content_item_box {
+    width: 320px; height: 600px;
+    border: 2px solid black;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.content_title {
+    text-align: center;
+    font-size: 50px;
+}
