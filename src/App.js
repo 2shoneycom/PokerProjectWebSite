@@ -5,7 +5,7 @@ import {
 } from "react-router-dom"
 import Home from "./routes/Home";
 import Info from "./routes/Info/Info";
-import Rank from "./routes/Rank";
+import Rank from "./routes/Rank/Rank";
 import Community from "./routes/Community";
 import PatchNote from "./routes/PatchNote";
 import Download from "./routes/Download";
@@ -13,6 +13,7 @@ import Info_About from "./routes/Info/Info_About";
 import Info_Seven from "./routes/Info/Info_Seven";
 import Info_Holdem from "./routes/Info/Info_Holdem";
 import Info_BlackJack from "./routes/Info/Info_BlackJack";
+import Rank_Detail from "./routes/Rank/Rank_Detail";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/Info/Seven" element={<Info_Seven />} />
         <Route path="/Info/BlackJack" element={<Info_BlackJack />} />
         <Route path="/Rank" element={<Rank />} />
+        <Route path="/Rank/:type" element={<Rank_Detail />} />
         <Route path="/Community" element={<Community />} />
         <Route path="/PatchNote" element={<PatchNote />} />
         <Route path="/Download" element={<Download />} />
