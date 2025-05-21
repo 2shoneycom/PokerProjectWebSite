@@ -133,3 +133,8 @@
 .about_contact_part {
     flex-grow: 0;
 }
+
+.update_coming {
+    width: 500px; height: 500px; margin: 50px auto;
+    font-size: 50px;
+}
