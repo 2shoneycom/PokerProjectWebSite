@@ -10,6 +10,9 @@ import Community from "./routes/Community";
 import PatchNote from "./routes/PatchNote";
 import Download from "./routes/Download";
 import Info_About from "./routes/Info/Info_About";
+import Info_Seven from "./routes/Info/Info_Seven";
+import Info_Holdem from "./routes/Info/Info_Holdem";
+import Info_BlackJack from "./routes/Info/Info_BlackJack";
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/Info" element={<Info />} />
         <Route path="/Info/About" element={<Info_About />} />
+        <Route path="/Info/Holdem" element={<Info_Holdem />} />
+        <Route path="/Info/Seven" element={<Info_Seven />} />
+        <Route path="/Info/BlackJack" element={<Info_BlackJack />} />
         <Route path="/Rank" element={<Rank />} />
         <Route path="/Community" element={<Community />} />
         <Route path="/PatchNote" element={<PatchNote />} />
