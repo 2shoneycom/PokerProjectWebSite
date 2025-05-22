@@ -9,14 +9,9 @@ function NavBar({ currentPage }) {
   return (
     <div className={style.nav_box}>
       <div className={style.left_nav}>
-        {leftMenuList.map((menu) => {
-          if (currentPage === `${menu}`) {
-            return <Link to={`/${menu}`} className={style.link_current}><MenuItem menuName={`${menu}`} /></Link>
-          }
-          else {
-            return <Link to={`/${menu}`} className={style.link_general}><MenuItem menuName={`${menu}`} /></Link>
-          }
-        })}
+        {leftMenuList.map((menu) =>
+          <MenuItem menuName={menu} currentPage={currentPage} />
+        )}
         {currentPage === "Homepage" ?
           null :
           <Link to="/">
@@ -27,7 +22,7 @@ function NavBar({ currentPage }) {
       <div className={style.right_nav}>
         {currentPage === "Download" ?
           null :
-          <Link to="/Download" className={style.link_general}><MenuItem menuName={"Download"} /></Link>
+          <MenuItem menuName={"Download"} />
         }
       </div>
     </div>

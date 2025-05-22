@@ -6,7 +6,7 @@ import {
 import Home from "./routes/Home";
 import Info from "./routes/Info/Info";
 import Rank from "./routes/Rank/Rank";
-import Community from "./routes/Community";
+import Community from "./routes/Community/Community";
 import PatchNote from "./routes/PatchNote";
 import Download from "./routes/Download";
 import Info_About from "./routes/Info/Info_About";
