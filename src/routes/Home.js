@@ -5,7 +5,7 @@ function Home() {
   return (
     <div className={style.mainpage}>
       <NavBar currentPage={"Homepage"} />
-      <div className={style.mainpage_section}>
+      <div className={style.mainpage_section_v1}>
         <div className={style.homepage_title}>Poker House</div>
         <img className={style.homepage_mainImage} src={process.env.PUBLIC_URL + "/img/pokerhouse_main.png"} alt="pokerhouse" />
         <div className={style.homepage_login}>Log In</div>
