@@ -80,6 +80,7 @@
     text-align: center;
     line-height: 60px;
     font-size: 60px;
+    cursor: pointer;
 }
 
 .nav_box {
@@ -231,7 +232,7 @@
     text-align: right;
 }
 
-.community_sub_title {
+.section_title {
     width: 100%;
     flex-grow: 0;
     flex-basis: 100px;
@@ -239,7 +240,7 @@
     font-size: 70px;
 }
 
-.community_sub_box {
+.section_main {
     width: 100%;
     flex-grow: 1;
     flex-basis: 500px;
@@ -247,7 +248,7 @@
     justify-content: space-around;
 }
 
-.community_sub_footer {
+.section_footer {
     width: 100%;
     flex-basis: 100px;
 }

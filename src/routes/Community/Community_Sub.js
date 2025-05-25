@@ -16,10 +16,10 @@ function Community_Sub() {
       <div className={style.mainpage_section_v3}>
         {
           type === "QA"
-            ? <div className={style.community_sub_title}>Q & A</div>
-            : <div className={style.community_sub_title}>General Discussion</div>
+            ? <div className={style.section_title}>Q & A</div>
+            : <div className={style.section_title}>General Discussion</div>
         }
-        <div className={style.community_sub_box}>
+        <div className={style.section_main}>
           {
             type === "QA"
               ? QAList.map((Item, index) => (
@@ -34,7 +34,7 @@ function Community_Sub() {
               ))
           }
         </div>
-        <div className={style.community_sub_footer}></div>
+        <div className={style.section_footer}></div>
       </div>
     </div>
   );

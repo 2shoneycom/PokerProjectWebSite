@@ -18,7 +18,7 @@ function Info_About() {
             <div className={style.about_contact_part}>Web</div>
           </div>
           <div className={style.about_contact_box}>
-            <div className={style.about_contact_name}>Heejun Ahn</div>
+            <div className={style.about_contact_name}>Heejun An</div>
             <div className={style.about_contact_email}>2shoneyhongik@gmail.com</div>
             <div className={style.about_contact_part}>Game</div>
           </div>
