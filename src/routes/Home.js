@@ -7,6 +7,7 @@ import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 function Home() {
   const [showModal, setShowModal] = useState(false);
   const [user, setUser] = useState(null);
+  const [nickName, setNickName] = useState(null);
 
   useEffect(() => {
     const auth = getAuth();
@@ -33,40 +34,40 @@ function Home() {
   return (
     <div className={style.mainpage}>
       <NavBar currentPage={"Homepage"} />
-      <div className={style.mainpage_section_v1}>
-        <div className={style.homepage_title}>Poker House</div>
-        <img
-          className={style.homepage_mainImage}
-          src={process.env.PUBLIC_URL + "/img/pokerhouse_main.png"}
-          alt="pokerhouse"
-        />
-
-        {user ? (
-          <div className={style.homepage_login_area}>
-            <div className={style.homepage_login}>
-              {user.displayName} 님
+      <div className={style.mainpage_section_v3}>
+        <div className={style.section_main}>
+          <div className={style.homepage_title}>Poker House</div>
+          <img
+            className={style.homepage_mainImage}
+            src={process.env.PUBLIC_URL + "/img/pokerhouse_main.png"}
+            alt="pokerhouse"
+          />
+          {user ? (
+            // 로그인 상태면
+            <div className={style.homepage_greeting}>
+              Hi, {nickName}
             </div>
-            <button
-              onClick={handleLogout}
-              className={style.logout_button}
-            >
-              로그아웃
-            </button>
-          </div>
-        ) : (
-          <div
-            onClick={() => setShowModal(true)}
-            className={style.homepage_login}
-          >
-            Log In
-          </div>
-        )}
-
+          ) : (
+            <div onClick={() => setShowModal(true)} className={style.homepage_login}>
+              Log In
+            </div>
+          )}
+        </div>
+        <div className={style.section_footer}>
+          {user ? (
+            // 로그인 상태면
+            <div onClick={handleLogout} className={style.logout_button}>
+              Log Out
+            </div>
+          ) : (
+            null
+          )}
+        </div>
         {showModal && (
-          <LoginModal onClose={() => setShowModal(false)} />
+          <LoginModal onClose={() => setShowModal(false)} setNickName={setNickName}/>
         )}
       </div>
-    </div>
+    </div >
   );
 }
 

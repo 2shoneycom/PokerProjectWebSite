@@ -1,14 +1,11 @@
 import styles from '../styles/LoginModal.module.css';
-import { signInWithGoogle } from '../firebase';
+import { loginAndCheckUser } from '../utilities/login';
 
-function LoginModal({ onClose }) {
+function LoginModal({ onClose, setNickName }) {
   const handleGoogleLogin = async () => {
     try {
-      const user = await signInWithGoogle();
-      console.log("로그인된 유저: ", user.displayName);
-      console.log(user);
+      await loginAndCheckUser(setNickName);
       onClose();
-      // 여기서 상태 업데이트, 전역 상태 저장 등 가능
     } catch (error) {
       alert("로그인 실패: " + error.message);
     }
