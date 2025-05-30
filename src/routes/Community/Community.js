@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import NavBar from "../../components/NavBar"
 import ContentItemBox from "../../components/ContentItemBox";
 import style from "../../styles/style.module.css"
+import Footer from "../../components/Footer";
 
 function Community() {
   const [communityList, setCommunityList] = useState(["Q & A", "General Discussion"]);
@@ -11,10 +12,14 @@ function Community() {
   return (
     <div className={style.mainpage}>
       <NavBar currentPage={"Community"} />
-      <div className={style.mainpage_section_v2}>
-        {communityList.map((Item, index) => {
-          return (<Link to={`${linkList[index]}`} className={style.link_general}><ContentItemBox content_title={Item} /></Link>);
-        })}
+      <div className={style.mainpage_section_v3}>
+        <div className={style.community_sub_title}></div>
+        <div className={style.community_sub_box}>
+          {communityList.map((Item, index) => {
+            return (<Link to={`${linkList[index]}`} className={style.link_general}><ContentItemBox content_title={Item} /></Link>);
+          })}
+        </div>
+        <Footer />
       </div>
     </div>
   );

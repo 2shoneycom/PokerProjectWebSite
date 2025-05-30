@@ -1,6 +1,6 @@
 import { deleteUser, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { ref, get } from "firebase/database";
-import { auth, db } from "../firebase";
+import { auth, db } from "./firebase";
 
 const provider = new GoogleAuthProvider();
 
@@ -41,11 +41,6 @@ async function loginAndCheckUser(setNickName) {
       await deleteUser(user);
       await signOut(auth);
       alert("이 계정은 게임에 등록되어 있지 않아 로그인할 수 없습니다.");
-    } else {
-      // 등록된 사용자: 닉네임 가져오기
-      const userData = snapshot.val();
-      setNickName(userData.nickName);
-      console.log("로그인 성공! 닉네임:", userData.nickName);
     }
   } catch (error) {
     console.error("로그인 중 오류 발생:", error);

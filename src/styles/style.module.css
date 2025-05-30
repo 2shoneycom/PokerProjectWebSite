@@ -124,8 +124,8 @@
 }
 
 .content_item_box {
-    width: 320px;
-    height: 600px;
+    width: 300px;
+    height: 500px;
     border: 2px solid black;
     border-radius: 20px;
     display: flex;
@@ -249,7 +249,9 @@
 
 .community_sub_footer {
     width: 100%;
-    flex-basis: 100px;
+    flex-basis: 50px;
+    margin-bottom: 30px;
+    position: relative;
 }
 
 .section_main {
@@ -266,7 +268,7 @@
 
 .section_footer {
     width: 100%;
-    flex-basis: 100px;
+    flex-basis: 50px;
     margin-bottom: 30px;
     position: relative;
 }
@@ -277,4 +279,11 @@
     width: fit-content;
     font-size: 30px;
     cursor: pointer;
+}
+
+.footer_nickName {
+    position: absolute;
+    left: 0px; bottom: 0px;
+    width: fit-content;
+    font-size: 30px;
 }

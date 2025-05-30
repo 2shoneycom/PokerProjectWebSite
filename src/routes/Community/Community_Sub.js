@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import NavBar from "../../components/NavBar"
 import ContentItemBox from "../../components/ContentItemBox";
 import style from "../../styles/style.module.css"
+import Footer from "../../components/Footer";
 
 function Community_Sub() {
   const { type } = useParams();
@@ -34,7 +35,7 @@ function Community_Sub() {
               ))
           }
         </div>
-        <div className={style.community_sub_footer}></div>
+        <Footer />
       </div>
     </div>
   );

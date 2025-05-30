@@ -1,10 +1,10 @@
 import styles from '../styles/LoginModal.module.css';
 import { loginAndCheckUser } from '../utilities/login';
 
-function LoginModal({ onClose, setNickName }) {
+function LoginModal({ onClose }) {
   const handleGoogleLogin = async () => {
     try {
-      await loginAndCheckUser(setNickName);
+      await loginAndCheckUser();
       onClose();
     } catch (error) {
       alert("로그인 실패: " + error.message);
