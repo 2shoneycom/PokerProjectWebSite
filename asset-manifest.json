@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/PokerProjectWebSite/static/css/main.1eb90fba.css",
-    "main.js": "/PokerProjectWebSite/static/js/main.86e44e87.js",
+    "main.css": "/PokerProjectWebSite/static/css/main.643cee2e.css",
+    "main.js": "/PokerProjectWebSite/static/js/main.088798af.js",
     "index.html": "/PokerProjectWebSite/index.html",
-    "main.1eb90fba.css.map": "/PokerProjectWebSite/static/css/main.1eb90fba.css.map",
-    "main.86e44e87.js.map": "/PokerProjectWebSite/static/js/main.86e44e87.js.map"
+    "main.643cee2e.css.map": "/PokerProjectWebSite/static/css/main.643cee2e.css.map",
+    "main.088798af.js.map": "/PokerProjectWebSite/static/js/main.088798af.js.map"
   },
   "entrypoints": [
-    "static/css/main.1eb90fba.css",
-    "static/js/main.86e44e87.js"
+    "static/css/main.643cee2e.css",
+    "static/js/main.088798af.js"
   ]
 }
