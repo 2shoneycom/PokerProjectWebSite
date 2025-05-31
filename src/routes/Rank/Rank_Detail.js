@@ -10,10 +10,18 @@ function Rank_Detail() {
   const [rankData, setRankData] = useState([]);
 
   useEffect(() => {
-    getAllUserChipData().then((users) => {
-      const sorted = users.sort((a, b) => b.seedMoney - a.seedMoney);
-      setRankData(sorted);
-    });
+    if (type === "Chip") {
+      getAllUserChipData().then((users) => {
+        const sorted = users.sort((a, b) => b.seedMoney - a.seedMoney);
+        setRankData(sorted);
+      });
+    } else if (type === "Holdem") {
+      // getAllUserHoldemData
+    } else if (type === "Seven") {
+      // getAllUserSevenData
+    } else if (type === "BlackJack") {
+      // getAllUserBlackJackData
+    }
   }, []);
 
   return (
