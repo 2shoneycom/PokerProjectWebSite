@@ -13,8 +13,23 @@ async function getNickName({ user }) {
     return nickName;
   } catch (error) {
     console.error("닉네임 가져오기 실패: ", error);
-    alert("닉네임을 가져오는 중 문제가 발생했습니다.");
   }
 }
 
-export { getNickName };
+async function getAllUserChipData() {
+  const usersRef = ref(db, "Users");
+  const snapshot = await get(usersRef);
+  const data = snapshot.val();
+
+  if (!data) return [];
+
+  const userList = Object.entries(data).map(([uid, userData]) => ({
+    uid,
+    nickName: userData.nickName,
+    seedMoney: userData.seedMoney,
+  }));
+
+  return userList;
+}
+
+export { getNickName, getAllUserChipData };
