@@ -1,6 +1,12 @@
 import { ref, get } from "firebase/database";
 import { db } from "./firebase";
 
+let nickName_saved = "";
+
+function getNickNameSaved() {
+  return nickName_saved;
+}
+
 async function getNickName({ user }) {
   try {
     // DB에 등록된 사용자 확인
@@ -10,6 +16,7 @@ async function getNickName({ user }) {
     const nickName = userData.nickName;
     console.log("닉네임 가져오기 성공: ", nickName);
 
+    nickName_saved = nickName;
     return nickName;
   } catch (error) {
     console.error("닉네임 가져오기 실패: ", error);
@@ -32,4 +39,4 @@ async function getAllUserChipData() {
   return userList;
 }
 
-export { getNickName, getAllUserChipData };
+export { getNickName, getAllUserChipData, getNickNameSaved };
