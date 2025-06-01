@@ -4,9 +4,12 @@ import NavBar from "../../components/NavBar";
 import { useEffect, useState } from "react";
 import { getAllUserChipData } from "../../utilities/database";
 import RankingRow from "../../components/RankingRow";
+import useAuth from "../../hooks/useAuth";
 
 function Rank_Detail() {
   const { type } = useParams();
+  const { user } = useAuth();
+  const [rankIdx, setRankIdx] = useState();
   const [rankData, setRankData] = useState([]);
 
   useEffect(() => {
@@ -24,12 +27,30 @@ function Rank_Detail() {
     }
   }, []);
 
+  useEffect(() => {
+    if (user && rankData.length > 0) {
+      const idx = rankData.findIndex((u) => u.uid === user.uid);
+      setRankIdx(idx);
+    }
+  }, [user, rankData]);
+
   return (
     <div className={style.mainpage}>
       <NavBar currentPage={"Rank"} />
       <div className={`${style.mainpage_section_v1}`}>
         <div className={style.content_box}>
-          <div className={style.about_title}>{`${type}` + " Ranking"}</div>
+          <div className={style.about_title}>
+            {`${type}` + " Ranking"}
+            {user && rankIdx >= 0 && (
+              <div className={style.myRank}>
+                <RankingRow
+                  rank={rankIdx + 1}
+                  nickName={rankData[rankIdx].nickName}
+                  chip={rankData[rankIdx].seedMoney}
+                />
+              </div>
+            )}
+          </div>
           <div className={style.rank_section}>
             <div className={style.rank_box}>
               <div className={style.rank_bar}>
