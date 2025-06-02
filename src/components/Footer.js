@@ -1,20 +1,11 @@
 import useAuth from "../hooks/useAuth";
 import style from "../styles/style.module.css"
-import { getNickName } from "../utilities/database";
+import { getNickNameSaved } from "../utilities/database";
 import { useState, useEffect } from "react";
 
 function Footer() {
   const { user } = useAuth();
-  const [nickname, setNickName] = useState("");
-
-  useEffect(() => {
-    if (user) {
-      getNickName({ user }).then((name) => {
-        setNickName(name);
-      });
-    }
-  }, [user]);
-
+  const [nickname, setNickName] = useState(getNickNameSaved());
 
   return (
     <div className={style.community_sub_footer}>
