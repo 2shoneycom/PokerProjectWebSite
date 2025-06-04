@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import style from "../../styles/style.module.css"
 import NavBar from "../../components/NavBar";
 import { useEffect, useState } from "react";
-import { getAllUserChipData } from "../../utilities/database";
+import { getAllUserChipData, getAllUserGameChipData } from "../../utilities/database";
 import RankingRow from "../../components/RankingRow";
 import useAuth from "../../hooks/useAuth";
 
@@ -15,15 +15,24 @@ function Rank_Detail() {
   useEffect(() => {
     if (type === "Chip") {
       getAllUserChipData().then((users) => {
-        const sorted = users.sort((a, b) => b.seedMoney - a.seedMoney);
+        const sorted = users.sort((a, b) => b.chip - a.chip);
         setRankData(sorted);
       });
     } else if (type === "Holdem") {
-      // getAllUserHoldemData
+      getAllUserGameChipData({ gameType: "holdem" }).then((ranks) => {
+        const sorted = ranks.sort((a, b) => b.chip - a.chip);
+        setRankData(sorted);
+      });
     } else if (type === "Seven") {
-      // getAllUserSevenData
+      getAllUserGameChipData({ gameType: "seven" }).then((ranks) => {
+        const sorted = ranks.sort((a, b) => b.chip - a.chip);
+        setRankData(sorted);
+      });
     } else if (type === "BlackJack") {
-      // getAllUserBlackJackData
+      getAllUserGameChipData({ gameType: "blackjack" }).then((ranks) => {
+        const sorted = ranks.sort((a, b) => b.chip - a.chip);
+        setRankData(sorted);
+      });
     }
   }, []);
 
@@ -46,7 +55,7 @@ function Rank_Detail() {
                 <RankingRow
                   rank={rankIdx + 1}
                   nickName={rankData[rankIdx].nickName}
-                  chip={rankData[rankIdx].seedMoney}
+                  chip={rankData[rankIdx].chip}
                 />
               </div>
             )}
@@ -63,7 +72,7 @@ function Rank_Detail() {
                   key={user.uid}
                   rank={index + 1}
                   nickName={user.nickName}
-                  chip={user.seedMoney}
+                  chip={user.chip}
                 />
               ))}
             </div>
