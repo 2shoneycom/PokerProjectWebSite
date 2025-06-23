@@ -20,9 +20,9 @@ function LoginModal({ onClose }) {
     <div className={styles.modalOverlay}>
       <div className={styles.modal}>
         <h2>Log In</h2>
-        <button onClick={handleGoogleLogin}>구글 로그인</button>
-        <button onClick={handleKakaoLogin}>카카오 로그인</button>
-        <button onClick={onClose}>닫기</button>
+        <img src={process.env.PUBLIC_URL + "/img/google_signin.png"} alt="google sign-in" onClick={handleGoogleLogin}/>
+        <img src={process.env.PUBLIC_URL + "/img/kakao_login_medium_narrow.png"} alt="kakao sign-in" onClick={handleKakaoLogin}/>
+        <div className={styles.closeBtn} onClick={onClose}>x</div>
       </div>
     </div>
   );
