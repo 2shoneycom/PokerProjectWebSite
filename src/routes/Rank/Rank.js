@@ -1,23 +1,23 @@
-import { useState } from "react";
-import NavBar from "../../components/NavBar"
-import ContentItemBox from "../../components/ContentItemBox";
-import style from "../../styles/style.module.css"
-import { Link } from "react-router-dom";
+import NavBar from "../../components/NavBar";
 import Footer from "../../components/Footer";
+import style from "../../styles/style.module.css";
+import ContentList from "../../components/ContentList";
 
 function Rank() {
-  const [rankList, setRankList] = useState(["Chip Ranking", "Texas Holdem Ranking", "Seven Poker Ranking", "BlackJack Ranking"]);
-  const [linkList, setLinkList] = useState(["Chip", "Holdem", "Seven", "BlackJack"]);
+  const rankItems = [
+    { title: "Chip Ranking", link: "Chip" },
+    { title: "Texas Holdem Ranking", link: "Holdem" },
+    { title: "Seven Poker Ranking", link: "Seven" },
+    { title: "BlackJack Ranking", link: "BlackJack" },
+  ];
 
   return (
     <div className={style.mainpage}>
-      <NavBar currentPage={"Rank"} />
+      <NavBar currentPage="Rank" />
       <div className={style.mainpage_section_v3}>
         <div className={style.community_sub_title}></div>
         <div className={style.community_sub_box}>
-          {rankList.map((rankItem, index) => {
-            return (<Link to={`${linkList[index]}`} className={style.link_general}><ContentItemBox content_title={rankItem} /></Link>);
-          })}
+          <ContentList items={rankItems}/>
         </div>
         <Footer />
       </div>

@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import style from "../../styles/style.module.css"
+import style from "../../styles/style.module.css";
 import NavBar from "../../components/NavBar";
 import { useEffect, useState } from "react";
 import { getAllUserChipData, getAllUserGameChipData } from "../../utilities/database";
@@ -9,32 +9,23 @@ import useAuth from "../../hooks/useAuth";
 function Rank_Detail() {
   const { type } = useParams();
   const { user } = useAuth();
-  const [rankIdx, setRankIdx] = useState();
   const [rankData, setRankData] = useState([]);
+  const [rankIdx, setRankIdx] = useState(null);
 
   useEffect(() => {
-    if (type === "Chip") {
-      getAllUserChipData().then((users) => {
-        const sorted = users.sort((a, b) => b.chip - a.chip);
-        setRankData(sorted);
-      });
-    } else if (type === "Holdem") {
-      getAllUserGameChipData({ gameType: "holdem" }).then((ranks) => {
-        const sorted = ranks.sort((a, b) => b.chip - a.chip);
-        setRankData(sorted);
-      });
-    } else if (type === "Seven") {
-      getAllUserGameChipData({ gameType: "seven" }).then((ranks) => {
-        const sorted = ranks.sort((a, b) => b.chip - a.chip);
-        setRankData(sorted);
-      });
-    } else if (type === "BlackJack") {
-      getAllUserGameChipData({ gameType: "blackjack" }).then((ranks) => {
-        const sorted = ranks.sort((a, b) => b.chip - a.chip);
-        setRankData(sorted);
-      });
-    }
-  }, []);
+    const fetchRankData = async () => {
+      if (type === "Chip") {
+        const users = await getAllUserChipData();
+        setRankData(users.sort((a, b) => b.chip - a.chip));
+      } else {
+        const lower = type.toLowerCase();
+        const ranks = await getAllUserGameChipData({ gameType: lower });
+        setRankData(ranks.sort((a, b) => b.chip - a.chip));
+      }
+    };
+
+    fetchRankData();
+  }, [type]);
 
   useEffect(() => {
     if (user && rankData.length > 0) {
@@ -43,14 +34,18 @@ function Rank_Detail() {
     }
   }, [user, rankData]);
 
+  const middleIndex = 10;
+  const leftRanks = rankData.slice(0, middleIndex);
+  const rightRanks = rankData.slice(middleIndex);
+
   return (
     <div className={style.mainpage}>
-      <NavBar currentPage={"Rank"} />
-      <div className={`${style.mainpage_section_v1}`}>
+      <NavBar currentPage="Rank" />
+      <div className={style.mainpage_section_v1}>
         <div className={style.content_box}>
           <div className={style.about_title}>
-            {`${type}` + " Ranking"}
-            {user && rankIdx >= 0 && (
+            {`${type} Ranking`}
+            {user && rankIdx >= 0 && rankData[rankIdx] && (
               <div className={style.myRank}>
                 <RankingRow
                   rank={rankIdx + 1}
@@ -61,31 +56,23 @@ function Rank_Detail() {
             )}
           </div>
           <div className={style.rank_section}>
-            <div className={style.rank_box}>
-              <div className={style.rank_bar}>
-                <div className={style.rank_bar_Rank}>Rank</div>
-                <div className={style.rank_bar_Nick}>NickName</div>
-                <div className={style.rank_bar_Chip}>Chip</div>
+            {[leftRanks, rightRanks].map((chunk, colIdx) => (
+              <div key={colIdx} className={style.rank_box}>
+                <div className={style.rank_bar}>
+                  <div className={style.rank_bar_Rank}>Rank</div>
+                  <div className={style.rank_bar_Nick}>NickName</div>
+                  <div className={style.rank_bar_Chip}>Chip</div>
+                </div>
+                {chunk.map((user, idx) => (
+                  <RankingRow
+                    key={user.uid}
+                    rank={colIdx === 0 ? idx + 1 : middleIndex + idx + 1}
+                    nickName={user.nickName}
+                    chip={user.chip}
+                  />
+                ))}
               </div>
-              {rankData.map((user, index) => (
-                <RankingRow
-                  key={user.uid}
-                  rank={index + 1}
-                  nickName={user.nickName}
-                  chip={user.chip}
-                />
-              ))}
-            </div>
-            <div className={style.rank_box}>
-              <div className={style.rank_bar}>
-                <div className={style.rank_bar_Rank}>Rank</div>
-                <div className={style.rank_bar_Nick}>NickName</div>
-                <div className={style.rank_bar_Chip}>Chip</div>
-              </div>
-              <div className={style.rank_item_box}>
-
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
