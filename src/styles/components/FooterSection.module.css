@@ -1,0 +1,28 @@
+.section_footer {
+  width: 100%;
+  flex-basis: 50px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.section_footer .logout_button {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: fit-content;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.section_footer .minigame_button {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  background-image: url('../../../public/img/minigame_button.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}

@@ -1,12 +1,17 @@
-import style from "../../styles/style.module.css";
+import styles from "../../styles/components/FooterSection.module.css";
 
 function FooterSection({ user, logout }) {
   return (
-    <div className={style.section_footer}>
+    <div className={styles.section_footer}>
       {user && (
-        <div onClick={logout} className={style.logout_button}>
-          Log Out
-        </div>
+        <>
+          <div onClick={logout} className={styles.logout_button}>
+            Log Out
+          </div>
+          <div className={styles.minigame_button}>
+            
+          </div>
+        </>
       )}
     </div>
   );
