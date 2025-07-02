@@ -4,6 +4,7 @@
     margin: 0px;
     padding: 0px;
     font-family: 'Indie Flower', cursive;
+    box-sizing: border-box;
 }
 body {
     background-color: #EDE9DF;
