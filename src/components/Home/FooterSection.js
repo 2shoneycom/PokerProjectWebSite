@@ -1,4 +1,5 @@
 import styles from "../../styles/components/FooterSection.module.css";
+import { Link } from "react-router-dom";
 
 function FooterSection({ user, logout }) {
   return (
@@ -8,9 +9,9 @@ function FooterSection({ user, logout }) {
           <div onClick={logout} className={styles.logout_button}>
             Log Out
           </div>
-          <div className={styles.minigame_button}>
-            
-          </div>
+          <Link to="/Minigame">
+            <div className={styles.minigame_button}></div>
+          </Link>
         </>
       )}
     </div>
