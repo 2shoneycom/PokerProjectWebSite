@@ -1,4 +1,4 @@
-import { ref, get } from "firebase/database";
+import { ref, get, runTransaction } from "firebase/database";
 import { db } from "./firebase";
 
 let nickName_saved = "";
@@ -92,4 +92,59 @@ async function getAllUserGameChipData({ gameType }) {
   return rankList;
 }
 
-export { getNickName, getSeedMoney, getAllUserChipData, getNickNameSaved, getAllUserGameChipData };
+
+async function deductSeedMoney({ user, amount }) {
+  if (!user || !user.uid) {
+    console.error("사용자 정보가 유효하지 않습니다.");
+    return;
+  }
+
+  const userRef = ref(db, `Users/${user.uid}`); // 🔄 seedMoney만 말고 전체 user 객체 접근
+
+  console.log("deductSeedMoney 호출됨 - user:", user);
+
+  try {
+    await runTransaction(userRef, (currentData) => {
+      if (currentData === null || currentData.seedMoney === undefined) {
+        console.warn("현재 seedMoney 정보가 없습니다.");
+        return; // 트랜잭션 취소
+      }
+
+      if (currentData.seedMoney < amount) {
+        console.warn("보유 금액이 부족합니다.");
+        return; // 트랜잭션 취소
+      }
+
+      // 💰 차감한 금액 반환
+      return {
+        ...currentData,
+        seedMoney: currentData.seedMoney - amount,
+      };
+    });
+
+    console.log(`${amount}원 차감 완료`);
+  } catch (error) {
+    console.error("금액 차감 실패: ", error);
+  }
+}
+
+async function addSeedMoney({ user, amount }) {
+  const userRef = ref(db, `Users/${user.uid}/seedMoney`);
+
+  try {
+    await runTransaction(userRef, (currentMoney) => {
+      if (currentMoney === null) {
+        console.warn("현재 금액이 없습니다.");
+        return; // 트랜잭션 취소
+      }
+
+      return currentMoney + amount;
+    });
+
+    console.log(`${amount}원 추가 완료`);
+  } catch (error) {
+    console.error("금액 추가 실패: ", error);
+  }
+}
+
+export { getNickName, getSeedMoney, getAllUserChipData, getNickNameSaved, getAllUserGameChipData, deductSeedMoney, addSeedMoney };
