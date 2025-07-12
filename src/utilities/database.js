@@ -1,5 +1,5 @@
 import { ref, get } from "firebase/database";
-import { db } from "./firebase";
+import { realtimeDB } from "./firebase";
 
 let nickName_saved = "";
 
@@ -9,8 +9,8 @@ function getNickNameSaved() {
 
 async function getNickName({ user }) {
   try {
-    // DB에 등록된 사용자 확인
-    const userRef = ref(db, `Users/${user.uid}`);
+    // realtimeDB에 등록된 사용자 확인
+    const userRef = ref(realtimeDB, `Users/${user.uid}`);
     const snapshot = await get(userRef);
     const userData = snapshot.val();
     const nickName = userData.nickName;
@@ -25,8 +25,8 @@ async function getNickName({ user }) {
 
 async function getNickNameByUid({ uid }) {
   try {
-    // DB에 등록된 사용자 확인
-    const userRef = ref(db, `Users/${uid}`);
+    // realtimeDB에 등록된 사용자 확인
+    const userRef = ref(realtimeDB, `Users/${uid}`);
     const snapshot = await get(userRef);
     const userData = snapshot.val();
     const nickName = userData.nickName;
@@ -40,7 +40,7 @@ async function getNickNameByUid({ uid }) {
 }
 
 async function getAllUserChipData() {
-  const usersRef = ref(db, "Users");
+  const usersRef = ref(realtimeDB, "Users");
   const snapshot = await get(usersRef);
   const data = snapshot.val();
 
@@ -56,7 +56,7 @@ async function getAllUserChipData() {
 }
 
 async function getAllUserGameChipData({ gameType }) {
-  const rankRef = ref(db, `MoneyRank/${gameType}`);
+  const rankRef = ref(realtimeDB, `MoneyRank/${gameType}`);
   const snapshot = await get(rankRef);
   const rankData = snapshot.val();
 
