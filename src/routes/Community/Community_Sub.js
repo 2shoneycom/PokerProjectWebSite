@@ -4,9 +4,11 @@ import ContentItemBox from "../../components/ContentItemBox";
 import style from "../../styles/style.module.css";
 import Footer from "../../components/Footer";
 import { usePosts } from "../../hooks/usePosts"; // 커스텀 훅 import
+import useAuth from "../../hooks/useAuth";
 
 function Community_Sub() {
   const { type } = useParams();
+  const { user } = useAuth();
   const { posts, loading, error } = usePosts(type);
 
   if (loading) {
@@ -47,6 +49,17 @@ function Community_Sub() {
       <div className={style.mainpage_section_v3}>
         <div className={style.community_sub_title}>
           {type === "QA" ? "Q & A" : "General Discussion"}
+          { user ? 
+            <div className={style.new_post_button}>
+              <Link
+                to={`newpost/${type}`}
+                className={style.link_general} 
+              >
+              <img 
+                src={process.env.PUBLIC_URL + "/img/new_post_button.png"}
+              />
+              </Link>
+            </div> : null }
         </div>
         <div className={style.community_sub_box}>
           {posts.length === 0 ? (
@@ -54,7 +67,7 @@ function Community_Sub() {
           ) : (
             posts.map((post) => (
               <Link 
-                to={`${post.id}`} 
+                to={`post/${post.id}?type=${type}`}
                 className={style.link_general} 
                 key={post.id}
               >

@@ -3,7 +3,7 @@
   flex-direction: column;
 }
 
-section {
+.section {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -12,14 +12,14 @@ section {
   margin-bottom: 50px;
 }
 
-article {
+.article {
   width: 100%;
   display: flex;
   flex-direction: column;
   margin-bottom: 150px;
 }
 
-article .title_box {
+.article .title_box {
   width: 100%; 
   flex-basis: 100px; /* similar with height */
   display: flex;  /* flex-direction: row */
@@ -44,7 +44,7 @@ article .title_box {
   cursor: pointer;
 }
 
-article .article_info_box {
+.article .article_info_box {
   width: 100%;
   flex-basis: 50px; /* similar with height */
   display: flex;  /* flex-direction: row */
@@ -72,7 +72,7 @@ article .article_info_box {
   margin-left: 10px;
 }
 
-article .article_content {
+.article .article_content {
   margin-top: 20px;
   font-size: 35px;
 }

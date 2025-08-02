@@ -13,8 +13,14 @@ export const usePosts = (type) => {
         setLoading(true);
         setError(null);
         
-        // posts 컬렉션에서 모든 데이터 가져오기
-        const postsCollection = collection(firestoreDB, 'posts');
+        // type에 따라 컬렉션 결정
+        let postsCollection;
+        if (type === "QA") {
+          postsCollection = collection(firestoreDB, 'questions');
+        } else {
+          postsCollection = collection(firestoreDB, 'generals');
+        }
+        
         const q = query(
           postsCollection,
           orderBy('createdAt', 'desc') // 최신 글부터 정렬
@@ -26,16 +32,7 @@ export const usePosts = (type) => {
           ...doc.data()
         }));
         
-        // 클라이언트 사이드에서 type별로 필터링
-        // type이 없는 경우 모든 게시글 반환
-        let filteredPosts = allPosts;
-        if (type) {
-          // URL의 type 파라미터에 따라 필터링 (QA 또는 GD)
-          // 실제로는 게시글 구분 로직을 추가해야 할 수 있음
-          filteredPosts = allPosts; // 현재는 모든 게시글 표시
-        }
-        
-        setPosts(filteredPosts);
+        setPosts(allPosts);
       } catch (err) {
         console.error('게시글을 가져오는 중 에러:', err);
         setError(err.message);

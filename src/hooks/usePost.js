@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
 import { firestoreDB } from '../utilities/firebase';
 
-export const usePost = (postId) => {
+export const usePost = (postId, type) => {
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -17,7 +17,13 @@ export const usePost = (postId) => {
           throw new Error('게시글 ID가 필요합니다.');
         }
 
-        const postRef = doc(firestoreDB, 'posts', postId);
+        let postRef;
+        if (type === "QA") {
+          postRef = doc(firestoreDB, 'questions', postId);
+        }
+        else {
+          postRef = doc(firestoreDB, 'generals', postId);
+        }
         const postSnap = await getDoc(postRef);
         
         if (postSnap.exists()) {

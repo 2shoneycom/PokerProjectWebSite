@@ -270,6 +270,17 @@
   flex-basis: 100px;
   line-height: 100px;
   font-size: 70px;
+  position: relative;
+}
+
+.community_sub_title .new_post_button {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+}
+
+.community_sub_title .new_post_button img {
+  cursor: pointer;
 }
 
 .community_sub_box {

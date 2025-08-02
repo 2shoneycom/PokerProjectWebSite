@@ -1,0 +1,77 @@
+.mainpage {
+    width: 100vw;
+    height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.section {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 50px;
+  padding-top: 100px;
+}
+
+.header {
+    width: 100%;
+    flex-basis: 100px;
+    position: relative;
+    font-size: 60px;
+}
+
+.close_button {
+  width: 40px; height: 40px;
+  position: absolute;
+  top: 10px; right: 10px;
+  cursor: pointer;
+}
+
+.article {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.newpost_title {
+    width: 98%;
+    flex-basis: 60px;
+    margin: 5px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    background-color: #EDE9DF;
+    font-size: 20px;
+    padding-left: 15px; /* 내부 여백 추가 */
+    outline: none; /* 포커스 시 테두리 제거 */
+}
+
+.newpost_main_content {
+    width: 98%;
+    flex-basis: 200px;
+    flex-grow: 1;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: #EDE9DF;
+    font-size: 20px;
+    padding: 15px; /* 내부 여백 추가 */
+    outline: none; /* 포커스 시 테두리 제거 */
+    resize: none; /* 크기 조절 핸들 제거 */
+    font-family: inherit; /* 폰트 상속 */
+    vertical-align: top; /* 텍스트를 위쪽부터 시작 */
+}
+
+.footer {
+    width: 100%;
+    flex-basis: 60px;
+    position: relative;
+}
+
+.done_button {
+    width: fit-content;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    font-size: 30px;
+}

@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import NavBar from "../../components/NavBar";
 import styles from "../../styles/Post.module.css";
 import { usePost } from "../../hooks/usePost";
@@ -6,12 +6,14 @@ import { usePost } from "../../hooks/usePost";
 function Community_Post() {
   const navigate = useNavigate();
   const { id } = useParams(); // postId가 아니라 id로 변경
+  const [searchParams] = useSearchParams();
+  const type = searchParams.get('type');
   
   // 디버깅을 위한 로그
   console.log('URL params:', useParams());
   console.log('id:', id);
   
-  const { post, loading, error } = usePost(id);
+  const { post, loading, error } = usePost(id, type);
 
   // 날짜 포맷 함수
   const formatDate = (timestamp) => {
@@ -30,7 +32,7 @@ function Community_Post() {
     return (
       <div className={styles.mainpage}>
         <NavBar currentPage={"Community"} />
-        <section>
+        <section className={styles.section}>
           <div>로딩 중...</div>
         </section>
       </div>
@@ -41,7 +43,7 @@ function Community_Post() {
     return (
       <div className={styles.mainpage}>
         <NavBar currentPage={"Community"} />
-        <section>
+        <section className={styles.section}>
           <div>에러가 발생했습니다: {error}</div>
         </section>
       </div>
@@ -52,7 +54,7 @@ function Community_Post() {
     return (
       <div className={styles.mainpage}>
         <NavBar currentPage={"Community"} />
-        <section>
+        <section className={styles.section}>
           <div>게시글을 찾을 수 없습니다.</div>
         </section>
       </div>
@@ -62,8 +64,8 @@ function Community_Post() {
   return (
     <div className={styles.mainpage}>
       <NavBar currentPage={"Community"} />
-      <section>
-        <article>
+      <section className={styles.section}>
+        <article className={styles.article}>
           <div className={styles.title_box}>
             <div className={styles.title}>{post.title || "제목 없음"}</div>
             <div className={styles.close_box}>
