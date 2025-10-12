@@ -9,20 +9,6 @@ function getNickNameSaved() {
 
 async function getSeedMoney({ user }) {
   try {
-    const userRef = ref(db, `Users/${user.uid}`);
-    const snapshot = await get(userRef);
-    const userData = snapshot.val();
-    const seedMoney = userData.seedMoney;
-    console.log("보유 금액 가져오기 성공: ", seedMoney);
-
-    return seedMoney;
-  } catch (error) {
-    console.error("보유 금액 가져오기 실패: ", error);
-  }
-}
-
-async function getSeedMoney({ user }) {
-  try {
     const userRef = ref(realtimeDB, `Users/${user.uid}`);
     const snapshot = await get(userRef);
     const userData = snapshot.val();
