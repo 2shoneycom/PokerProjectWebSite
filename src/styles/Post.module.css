@@ -92,6 +92,8 @@
 
 .comment_area .comment {
   width: 98%;
+  margin: 10px 0px;
+  padding: 10px;
   border: 2px solid black;
   border-radius: 10px;
   display: flex;
@@ -131,4 +133,21 @@
   width: 100%;
   margin: 10px;
   font-size: 30px;
+}
+
+.comment .new_comment {
+  border: none;
+  background-color: #EDE9DF;
+  font-size: 25px;
+  outline: none;
+}
+
+.comment .submit_box {
+  display: flex;
+  justify-content: end;
+}
+
+.submit_box .submit_button {
+  cursor: pointer;
+  font-size: 20px;
 }

@@ -1,6 +1,17 @@
 import { useState, useEffect } from 'react';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, updateDoc, arrayUnion, Timestamp } from 'firebase/firestore';
 import { firestoreDB } from '../utilities/firebase';
+
+// New function to handle the database write operation
+const addCommentToFirestore = async (postId, type, commentData) => {
+    const collectionName = type === "QA" ? 'questions' : 'generals';
+    const postRef = doc(firestoreDB, collectionName, postId);
+
+    // Use arrayUnion to safely add the new comment to the 'comments' array
+    await updateDoc(postRef, {
+        comments: arrayUnion(commentData)
+    });
+};
 
 export const usePost = (postId, type) => {
   const [post, setPost] = useState(null);
@@ -18,17 +29,17 @@ export const usePost = (postId, type) => {
         }
 
         let postRef;
-        if (type === "QA") {
-          postRef = doc(firestoreDB, 'questions', postId);
-        }
-        else {
-          postRef = doc(firestoreDB, 'generals', postId);
-        }
+        // Determine the collection based on 'type'
+        const collectionName = type === "QA" ? 'questions' : 'generals';
+        postRef = doc(firestoreDB, collectionName, postId);
+
         const postSnap = await getDoc(postRef);
         
         if (postSnap.exists()) {
           setPost({
             id: postSnap.id,
+            // Ensure comments exist as an array for safe use in the component
+            comments: [], 
             ...postSnap.data()
           });
         } else {
@@ -43,7 +54,14 @@ export const usePost = (postId, type) => {
     };
 
     fetchPost();
-  }, [postId]);
+  }, [postId, type]); // Added 'type' to dependency array
 
-  return { post, loading, error };
+  // Return setPost and the new database function
+  return { 
+      post, 
+      loading, 
+      error, 
+      setPost, // **1. Return setPost for local UI updates**
+      addCommentToFirestore // **2. Return Firestore write function**
+  };
 };
