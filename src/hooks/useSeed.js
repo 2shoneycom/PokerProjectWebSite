@@ -12,7 +12,7 @@ function useSeed(user) {
     }
   }, [user]);
 
-  return seedMoney;
+  return {seedMoney, setSeedMoney};
 }
 
 export default useSeed;

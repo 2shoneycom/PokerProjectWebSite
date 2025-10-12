@@ -139,7 +139,7 @@ async function addSeedMoney({ user, amount }) {
     }
 
     await set(userRef, currentMoney + amount);
-    console.log(`✅ ${amount}원 증감 완료 (남은 금액: ${currentMoney - amount})`);
+    console.log(`✅ ${amount}원 증감 완료 (남은 금액: ${currentMoney + amount})`);
   } catch (error) {
     console.error("💥 금액 증감 실패: ", error);
   }

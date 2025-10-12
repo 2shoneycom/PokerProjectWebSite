@@ -10,7 +10,7 @@ import { addSeedMoney, deductSeedMoney } from "../utilities/database";
 function Minigame() {
   const { user, logout } = useAuth();
   const nickName = useNickname(user);
-  const seedMoney = useSeed(user);
+  const {seedMoney, setSeedMoney} = useSeed(user);
 
   const reelSymbols = [
     "🍒", "🍋", "🍊", "🍉", "⭐", "🔔", "7️⃣",
@@ -22,15 +22,20 @@ function Minigame() {
   const spinSlotMachine = () => {
     // 먼저 사용자 보유 금액에서 1,000원 차감 필요
     deductSeedMoney({user, amount: 1000});
+    setSeedMoney(seedMoney-1000);
 
     const getRandomIndex = () => Math.floor(Math.random() * reelSymbols.length);
     const idx1 = getRandomIndex();
     const idx2 = getRandomIndex();
     const idx3 = getRandomIndex();
 
+    console.log(`idx1: ${idx1}, idx2: ${idx2}, idx3: ${idx3}`);
+
     // 결과 분석 후, 당첨이면 사용자 보유 금액 증가 필요
-    if (idx1 === idx2 && idx2 === idx3) {
+    if (reelSymbols[idx1] == reelSymbols[idx2] && reelSymbols[idx2] === reelSymbols[idx3]) {
+      console.log("당첨!");
       addSeedMoney({user, amount: 10000});
+      setSeedMoney(seedMoney+10000);
     }
 
     setSlotIndexs([idx1, idx2, idx3]);
