@@ -98,7 +98,7 @@ async function deductSeedMoney({ user, amount }) {
     return;
   }
 
-  const userRef = ref(db, `Users/${user.uid}/seedMoney`);
+  const userRef = ref(realtimeDB, `Users/${user.uid}/seedMoney`);
 
   try {
     const snapshot = await get(userRef);
@@ -127,7 +127,7 @@ async function addSeedMoney({ user, amount }) {
     return;
   }
 
-  const userRef = ref(db, `Users/${user.uid}/seedMoney`);
+  const userRef = ref(realtimeDB, `Users/${user.uid}/seedMoney`);
 
   try {
     const snapshot = await get(userRef);
