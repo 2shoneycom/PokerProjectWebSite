@@ -1,0 +1,153 @@
+.mainpage {
+  display: flex;
+  flex-direction: column;
+}
+
+.section {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 50px;
+  padding-top: 100px;
+  margin-bottom: 50px;
+}
+
+.article {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 150px;
+}
+
+.article .title_box {
+  width: 100%; 
+  flex-basis: 100px; /* similar with height */
+  display: flex;  /* flex-direction: row */
+}
+
+.title_box .title {
+  height: 100%;
+  flex-grow: 1;
+  font-size: 60px; line-height: 100px;
+}
+
+.title_box .close_box {
+  height: 100%;
+  flex-basis: 100px;
+  position: relative;
+}
+
+.close_box img.close {
+  width: 50px; height: 50px;
+  position: absolute;
+  top: 10px; right: 10px;
+  cursor: pointer;
+}
+
+.article .article_info_box {
+  width: 100%;
+  flex-basis: 50px; /* similar with height */
+  display: flex;  /* flex-direction: row */
+}
+
+.article_info_box .article_date {
+  flex-basis: 150px;
+  flex-grow: 1;
+  font-size: 30px; line-height: 50px;
+}
+
+.article_info_box .article_author {
+  flex-basis: 300px;
+  flex-grow: 8;
+  font-size: 30px; line-height: 50px;
+  display: flex; /* flex-direction: row */
+}
+
+.article_author .profile_image {
+  flex-basis: 50px;
+  background-color: tomato;
+}
+
+.article_author .author_name {
+  margin-left: 10px;
+}
+
+.article .article_content {
+  margin-top: 20px;
+  font-size: 35px;
+}
+
+.comment_area {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comment_area .title {
+  width: 100%;
+  flex-basis: 100px; /* similar with height */
+  font-size: 60px; line-height: 100px;
+}
+
+.comment_area .comment {
+  width: 98%;
+  margin: 10px 0px;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment .comment_info_box {
+  width: 100%;
+  flex-basis: 50px; /* similar with height */
+  display: flex;  /* flex-direction: row */
+  margin: 10px;
+}
+
+.comment_info_box .comment_date {
+  flex-basis: 150px;
+  flex-grow: 1;
+  font-size: 25px; line-height: 50px;
+}
+
+.comment_info_box .comment_author {
+  flex-basis: 300px;
+  flex-grow: 8;
+  font-size: 25px; line-height: 50px;
+  display: flex; /* flex-direction: row */
+}
+
+.comment_info_box .profile_image {
+  flex-basis: 50px;
+  background-color: tomato;
+}
+
+.comment_info_box .author_name {
+  margin-left: 10px;
+}
+
+.comment .main_comment {
+  width: 100%;
+  margin: 10px;
+  font-size: 30px;
+}
+
+.comment .new_comment {
+  border: none;
+  background-color: #EDE9DF;
+  font-size: 25px;
+  outline: none;
+}
+
+.comment .submit_box {
+  display: flex;
+  justify-content: end;
+}
+
+.submit_box .submit_button {
+  cursor: pointer;
+  font-size: 20px;
+}

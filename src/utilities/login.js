@@ -1,6 +1,6 @@
 import { deleteUser, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { ref, get } from "firebase/database";
-import { auth, db } from "./firebase";
+import { auth, realtimeDB } from "./firebase";
 
 const provider = new GoogleAuthProvider();
 
@@ -32,8 +32,8 @@ async function loginAndCheckUser(setNickName) {
   try {
     const user = await signInWithGoogle();
 
-    // DB에 등록된 사용자 확인
-    const userRef = ref(db, `Users/${user.uid}`);
+    // realtimeDB에 등록된 사용자 확인
+    const userRef = ref(realtimeDB, `Users/${user.uid}`);
     const snapshot = await get(userRef);
 
     if (!snapshot.exists()) {
