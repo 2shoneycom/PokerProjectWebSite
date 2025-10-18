@@ -8,7 +8,7 @@ function Info() {
     { title: "About Game..", link: "About" },
     { title: "How To Play Texas Holdem", link: "Holdem" },
     { title: "How To Play Seven Poker", link: "Seven" },
-    { title: "How To Play Black Jack", link: "BlackJack" },
+    { title: "How To Play BlackJack", link: "BlackJack" },
   ];
 
   return (

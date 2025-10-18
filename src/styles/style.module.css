@@ -34,6 +34,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .mainpage_section_v1 {
@@ -57,11 +58,22 @@
   padding-top: 100px;
 }
 
-.homepage_title {
-  width: fit-content;
-  line-height: 100px;
-  font-size: 100px;
-  letter-spacing: 10px;
+@media screen and (min-width: 740px) {
+  .homepage_title {
+    width: fit-content;
+    line-height: 100px;
+    font-size: 100px;
+    letter-spacing: 10px;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .homepage_title {
+    width: fit-content;
+    line-height: 100px;
+    font-size: 70px;
+    letter-spacing: 2px;
+  }
 }
 
 .homepage_mainImage {
@@ -82,23 +94,116 @@
   font-size: 60px;
 }
 
-.nav_box {
-  position: fixed;
-  width: 100%;
-  height: 100px;
-  z-index: 10;
-  background-color: #EDE9DF;
+/* (반응형 웹) 큰 화면 */
+@media screen and (min-width: 600px) {
+  .nav_box {
+    position: fixed;
+    width: 95%;
+    height: 100px;
+    z-index: 10;
+    background-color: #EDE9DF;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .wide_screen {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .small_screen {
+    display: none;
+  }
+
+  .community_sub_box {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .content_item_box {
+    width: 50%;
+    height: 500px;
+    border: 2px solid black;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .content_title {
+    text-align: center;
+    font-size: 50px;
+  }
+
+  .community_sub_title {
+    width: 100%;
+    flex-grow: 0;
+    flex-basis: 100px;
+    line-height: 100px;
+    font-size: 70px;
+    position: relative;
+  }
+}
+
+/* (반응형 웹) 작은 화면 */
+@media screen and (max-width: 600px) {
+  .nav_box {
+    position: fixed;
+    width: 85%;
+    height: 100px;
+    z-index: 10;
+    background-color: #EDE9DF;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .wide_screen {
+    display: none;
+  }
+
+  .small_screen {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .community_sub_box {
+    width: 100%;
+    flex-grow: 1;
+    flex-basis: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .content_item_box {
+    width: 300px;
+    height: 100px;
+    border: 2px solid black;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .content_title {
+    text-align: center;
+    font-size: 30px;
+  }
+
+  .community_sub_title {
+    display: none;
+  }
 }
 
 .left_nav {
-  position: absolute;
-  left: 0px;
-  display: flex;
+  width: 70%;
 }
 
 .right_nav {
-  position: absolute;
-  right: 0px;
   display: flex;
 }
 
@@ -110,33 +215,39 @@
 
 .menu_box {
   height: 100px;
-  margin: 0px 50px;
+  /*margin: 0px 50px;*/
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border-radius: 1rem;
 }
 
-.menu_name {
-  font-size: 30px;
+@media screen and (max-width: 1000px) {
+  .menu_name {
+    font-size: 25px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .menu_name {
+    font-size: 30px;
+  }
 }
 
 .menu_name:hover {
   cursor: pointer;
 }
 
-.content_item_box {
-  width: 300px;
-  height: 500px;
-  border: 2px solid black;
-  border-radius: 20px;
+.dropdown_menu {
+  position: fixed;
+  margin-top: 100px;
+  padding: 10px;
+  z-index: 5;
+  width: 85%;
+  background-color: #d8d4c9;
+  border-radius: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-}
-
-.content_title {
-  text-align: center;
-  font-size: 50px;
 }
 
 .content_box {
@@ -197,7 +308,8 @@
   padding: 10px 30px;
   display: flex;
   flex-direction: row;
-  gap: 20px; /* 두 열 사이 공간 */
+  gap: 20px;
+  /* 두 열 사이 공간 */
 }
 
 .rank_box {
@@ -264,15 +376,6 @@
   top: 30px;
 }
 
-.community_sub_title {
-  width: 100%;
-  flex-grow: 0;
-  flex-basis: 100px;
-  line-height: 100px;
-  font-size: 70px;
-  position: relative;
-}
-
 .community_sub_title .new_post_button {
   position: absolute;
   right: 0px;
@@ -281,14 +384,6 @@
 
 .community_sub_title .new_post_button img {
   cursor: pointer;
-}
-
-.community_sub_box {
-  width: 100%;
-  flex-grow: 1;
-  flex-basis: 500px;
-  display: flex;
-  justify-content: space-around;
 }
 
 .community_sub_footer {
