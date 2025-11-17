@@ -16,7 +16,7 @@ function Community() {
         <div className={style.community_sub_title}></div>
         <div className={style.community_sub_box}>
           {communityList.map((Item, index) => {
-            return (<Link to={`${linkList[index]}`} className={style.link_general}><ContentItemBox content_title={Item} /></Link>);
+            return (<Link to={`${linkList[index]}`} className={style.link_general}>{Item}</Link>);
           })}
         </div>
         <Footer />

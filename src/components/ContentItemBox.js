@@ -1,4 +1,4 @@
-import style from "../styles/style.module.css"
+/*import style from "../styles/style.module.css"
 
 function ContentItemBox({content_title}) {
   return (
@@ -10,4 +10,6 @@ function ContentItemBox({content_title}) {
   );
 }
 
-export default ContentItemBox;
+export default ContentItemBox;*/
+
+// 현재 안쓰는 중 입니다.

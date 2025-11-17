@@ -5,7 +5,7 @@ import style from "../styles/style.module.css";
 function ContentList({ items }) {
   return items.map((item) => (
     <Link key={item.link} to={item.link} className={style.link_general}>
-      <ContentItemBox content_title={item.title} />
+      {item.title}
     </Link>
   ));
 }
