@@ -7,7 +7,7 @@ function Rank() {
   const rankItems = [
     { title: "Chip Ranking", link: "Chip" },
     { title: "Texas Holdem Ranking", link: "Holdem" },
-    { title: "Seven Poker Ranking", link: "Seven" },
+    { title: "Seven Poker Ranking", link: "Poker" },
     { title: "BlackJack Ranking", link: "BlackJack" },
   ];
 
@@ -15,7 +15,6 @@ function Rank() {
     <div className={style.mainpage}>
       <NavBar currentPage="Rank" />
       <div className={style.mainpage_section_v3}>
-        <div className={style.community_sub_title}></div>
         <div className={style.community_sub_box}>
           <ContentList items={rankItems}/>
         </div>

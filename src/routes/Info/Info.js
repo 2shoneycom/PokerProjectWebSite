@@ -15,7 +15,6 @@ function Info() {
     <div className={style.mainpage}>
       <NavBar currentPage="Info" />
       <div className={style.mainpage_section_v3}>
-        <div className={style.community_sub_title}></div>
         <div className={style.community_sub_box}>
           <ContentList items={infoItems}/>
         </div>

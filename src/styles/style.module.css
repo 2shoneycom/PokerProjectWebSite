@@ -39,6 +39,7 @@
 
 .mainpage_section_v1 {
   flex-grow: 1;
+  width: 90%;
   padding-top: 100px;
 }
 
@@ -59,29 +60,6 @@
   padding-top: 100px;
 }
 
-@media screen and (min-width: 740px) {
-  .homepage_title {
-    width: fit-content;
-    line-height: 100px;
-    font-size: 100px;
-    letter-spacing: 10px;
-  }
-}
-
-@media screen and (max-width: 740px) {
-  .homepage_title {
-    width: fit-content;
-    line-height: 100px;
-    font-size: 70px;
-    letter-spacing: 2px;
-  }
-}
-
-.homepage_mainImage {
-  width: 400px;
-  height: 400px;
-}
-
 .homepage_login {
   width: fit-content;
   line-height: 60px;
@@ -89,14 +67,38 @@
   cursor: pointer;
 }
 
-.homepage_greeting {
-  width: fit-content;
-  line-height: 60px;
-  font-size: 60px;
-}
-
 /* (반응형 웹) 큰 화면 */
 @media screen and (min-width: 600px) {
+  .section_main {
+    width: 100%;
+    flex-grow: 1;
+    flex-basis: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    gap: 20px;
+  }
+
+  .homepage_title {
+    width: fit-content;
+    line-height: 100px;
+    font-size: 100px;
+    letter-spacing: 10px;
+  }
+
+  .homepage_mainImage {
+    width: 400px;
+    height: 400px;
+  }
+
+  .homepage_greeting {
+    width: fit-content;
+    line-height: 60px;
+    font-size: 60px;
+  }
+
   .nav_box {
     position: fixed;
     width: 95%;
@@ -156,10 +158,92 @@
     font-size: 70px;
     position: relative;
   }
+
+  .about_title {
+    height: 100px;
+    margin: 0px 30px;
+    line-height: 100px;
+    font-size: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .about_contact_box {
+    height: 50px;
+    margin: 0px 30px 20px;
+    line-height: 50px;
+    font-size: 30px;
+    display: flex;
+  }
+
+  .about_contact_name {
+    flex-basis: 200px;
+  }
+
+  .rank_box:first-child {
+    border-right: 1px solid black;
+  }
+
+  .myRank {
+    width: 400px;
+    height: 50%;
+    padding: 3px 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+  }
+
+  .how_to_content {
+    width: 95%;
+    height: 45%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 25px;
+    gap: 10px;
+  }
+
+  .how_to_text {}
+
+  .how_to_img {
+    height: 200px;
+  }
 }
 
 /* (반응형 웹) 작은 화면 */
 @media screen and (max-width: 600px) {
+  .section_main {
+    width: 100%;
+    flex-grow: 1;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    gap: 20px;
+  }
+
+  .homepage_title {
+    width: fit-content;
+    line-height: 100px;
+    font-size: 60px;
+    letter-spacing: 2px;
+  }
+
+  .homepage_mainImage {
+    width: 300px;
+    height: 300px;
+  }
+
+  .homepage_greeting {
+    width: fit-content;
+    line-height: 40px;
+    font-size: 40px;
+  }
+
   .nav_box {
     position: fixed;
     width: 85%;
@@ -204,6 +288,58 @@
 
   .community_sub_title {
     display: none;
+  }
+
+  .about_title {
+    height: 150px;
+    margin: 0px 30px;
+    font-size: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .about_contact_box {
+    height: 20px;
+    margin: 0px 30px 10px;
+    line-height: 50px;
+    font-size: 15px;
+    display: flex;
+  }
+
+  .about_contact_name {
+    flex-basis: 100px;
+  }
+
+  .rank_box:nth-child(2) {
+    display: none;
+  }
+
+  .myRank {
+    width: 100%;
+    height: 50px;
+    padding: 3px 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+  }
+
+  .how_to_content {
+    width: 95%;
+    height: 47%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 20px;
+    gap: 10px;
+  }
+
+  .how_to_text {}
+
+  .how_to_img {
+    height: 150px;
   }
 }
 
@@ -266,38 +402,18 @@
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-}
-
-.about_title {
-  height: 100px;
-  margin: 0px 30px;
-  line-height: 100px;
-  font-size: 50px;
-  display: flex;
   position: relative;
 }
 
 .about_text {
-  height: 200px;
-  margin-left: 30px;
+  /* height: 200px; */
+  flex-basis: 200px;
+  margin: 0px 30px;
   font-size: 30px;
-}
-
-.about_contact_box {
-  height: 50px;
-  margin: 0px 30px 20px;
-  line-height: 50px;
-  font-size: 30px;
-  display: flex;
-}
-
-.about_contact_name {
-  width: 200px;
-  flex-grow: 1;
 }
 
 .about_contact_email {
-  flex-grow: 4;
+  flex-grow: 1;
 }
 
 .about_contact_part {
@@ -327,7 +443,6 @@
 }
 
 .rank_box:first-child {
-  border-right: 1px solid black;
   padding-right: 10px;
 }
 
@@ -343,7 +458,7 @@
 }
 
 .rank_bar_Rank {
-  flex-basis: 100px;
+  flex-basis: 60px;
 }
 
 .rank_bar_Nick {
@@ -356,10 +471,11 @@
   height: 40px;
   line-height: 40px;
   font-size: 25px;
+  flex-grow: 1;
 }
 
 .ranking_row>.rank {
-  flex-basis: 100px;
+  flex-basis: 60px;
 }
 
 .ranking_row>.nickName {
@@ -372,16 +488,6 @@
 .rank_bar_Chip {
   flex-basis: 100px;
   text-align: right;
-}
-
-.myRank {
-  width: 500px;
-  padding: 3px 10px;
-  border: 2px solid black;
-  border-radius: 10px;
-  position: absolute;
-  right: 0px;
-  top: 30px;
 }
 
 .community_sub_title .new_post_button {
@@ -399,18 +505,6 @@
   flex-basis: 50px;
   margin-bottom: 30px;
   position: relative;
-}
-
-.section_main {
-  width: 100%;
-  flex-grow: 1;
-  flex-basis: 500px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  gap: 20px;
 }
 
 .section_footer {
@@ -449,4 +543,39 @@
   height: 50px;
   border-radius: 100%;
   background-color: #EDE9DF;
+}
+
+.how_to_container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+  align-items: center;
+}
+
+.prev_page_btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background-color: #EDE9DF;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.next_page_btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background-color: #EDE9DF;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  right: -30px;
+  z-index: 5;
+  cursor: pointer;
 }

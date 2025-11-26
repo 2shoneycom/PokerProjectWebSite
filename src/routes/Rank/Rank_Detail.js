@@ -44,7 +44,7 @@ function Rank_Detail() {
       <div className={style.mainpage_section_v1}>
         <div className={style.content_box}>
           <div className={style.about_title}>
-            {`${type} Ranking`}
+            <div className={style.rank_title}>{`${type} Ranking`}</div>
             {user && rankIdx >= 0 && rankData[rankIdx] && (
               <div className={style.myRank}>
                 <RankingRow

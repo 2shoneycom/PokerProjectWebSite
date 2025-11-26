@@ -5,8 +5,8 @@ import style from "../../styles/style.module.css";
 function Info_About() {
   const contacts = [
     { name: "SeungHeon Lee", email: "2shoneyhongik@gmail.com", part: "Web" },
-    { name: "Heejun An", email: "2shoneyhongik@gmail.com", part: "Game" },
-    { name: "JungHyun Oh", email: "2shoneyhongik@gmail.com", part: "DB" }
+    { name: "Heejun An", email: "hidolee@naver.com", part: "Game" },
+    { name: "JungHyun Oh", email: "dhwjdgus0312@naver.com", part: "DB" }
   ];
 
   return (

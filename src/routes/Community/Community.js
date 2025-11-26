@@ -13,7 +13,6 @@ function Community() {
     <div className={style.mainpage}>
       <NavBar currentPage={"Community"} />
       <div className={style.mainpage_section_v3}>
-        <div className={style.community_sub_title}></div>
         <div className={style.community_sub_box}>
           {communityList.map((Item, index) => {
             return (<Link to={`${linkList[index]}`} className={style.link_general}>{Item}</Link>);
